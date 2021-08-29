@@ -1,13 +1,9 @@
 <template>
     <div>
-        <h3>Bem vindo à área de gerenciamento, {{ userName }}</h3>
-        <div class="center-in-screen">
-            <div class="formCard fadeIn first">
-            </div>
-                
-        </div>
+        <h3 class="greeting">Bem vindo à área de gerenciamento, {{ userName }}</h3>
+        <div class="card fadeIn first">
+        </div>   
         <custom-footer></custom-footer>
-
     </div>
 </template>
 
@@ -36,8 +32,19 @@ export default {
 }
 </script>
 <style scoped>
+.greeting {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 35px;
+  margin-bottom: 0;
+}
 
-.formCard {
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #1e1e1e;
