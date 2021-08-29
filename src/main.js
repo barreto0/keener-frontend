@@ -4,6 +4,9 @@ import App from './App.vue'
 import VueResource from 'vue-resource'; // modulo de consumo de api
 import VueRouter from 'vue-router'; // modulo de roteamento da aplicação
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBoxes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import api from './environment'; 
 import {routes} from './routes';
@@ -25,6 +28,9 @@ const router = new VueRouter({
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+
+library.add(faBoxes)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 new Vue({
   router: router,
