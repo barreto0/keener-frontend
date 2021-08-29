@@ -90,16 +90,13 @@ export default {
             .then((success) => {
                 if (success) {
                     this.loadingRequest = true;
-                    UserService.authUser(this.email, this.password)
-                    .then((res) => {
-                        const token = res.data.token;
-                        localStorage.setItem('token', token);
+                    if (UserService.authUser(this.email, this.password)){
                         this.loadingRequest = false;
-                    }, (err) => {
-                        console.log(err);
+                        this.$router.push('/dashboard');
+                    } else {
                         this.loadingRequest = false;
                         this.$refs.loginErrorModal.open();
-                    })
+                    }                    
                 } else {
                     this.loadingRequest = false;
                 }
@@ -147,18 +144,6 @@ export default {
     margin-bottom: 10px;
     margin-right: 12px;
     color: #7f00bf;
-}
-footer {
-  color: gray;
-  font-size: 15px;
-  text-align: center;
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:90px;
-}
-footer, p{
-    margin: 0;
 }
 
 </style>

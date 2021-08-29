@@ -110,16 +110,16 @@ export default {
             .then((success) => {
                 if (success) {
                     this.loadingRequest = true;
-                    UserService.registerUser(this.name, this.email, this.password)
-                    .then((res) => {
-                        console.log(res);
+                    const successRegister = UserService.registerUser(this.name, this.email, this.password)
+                    if (successRegister) {
                         this.loadingRequest = false;
                         this.$refs.loginSuccessModal.open();
-                    }, (err) => {
-                        this.errorMessage = err.response.data.message
+                    } else {
+                        this.errorMessage = successRegister.message
                         this.loadingRequest = false;
-                        this.$refs.loginErrorModal.open();
-                    })
+                        this.$refs.loginErrorModal.open();  
+                    }
+                    
                 } else {
                     this.loadingRequest = false;
                 }
