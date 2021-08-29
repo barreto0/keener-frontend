@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container">
+        <div class="center-in-screen">
             <div class="formCard">
                 <div class="cardHeader">
                     <font-awesome-icon class="icon" icon="boxes" />
@@ -38,7 +38,7 @@
                             v-on:buttonActivated="nuke()"
                             ></custom-button>
 
-                            <p class="signupText">Ainda não possui cadastro? Clique aqui!</p>
+                            <p class="signupText" v-on:click="$router.push('/signup')">Ainda não possui cadastro? Clique aqui!</p>
                         </div>
                     
                     </b-form>
@@ -67,12 +67,6 @@ export default {
 }
 </script>
 <style scoped>
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
 .cardHeader {
     display: flex;
     justify-content: center;

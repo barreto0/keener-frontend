@@ -3,6 +3,25 @@ body {
   color: whitesmoke;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+footer {
+  color: gray;
+  font-size: 15px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+}
+footer,
+p {
+  margin: 0;
+}
+.center-in-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 .form-control:focus {
   -webkit-box-shadow: -1px 2px 22px 0px rgba(127, 0, 191, 1);
   -moz-box-shadow: -1px 2px 22px 0px rgba(127, 0, 191, 1);
