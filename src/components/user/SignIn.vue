@@ -39,14 +39,17 @@
                         <span class="error" v-show="errors.has('Senha')">{{ errors.first('Senha') }}</span>
                     
                     </b-form>
-                    <div class="formFooter">
+                    <div v-if="!loadingRequest" class="formFooter">
                         <custom-button
                             type="submit"
                             label="Entrar"
                             v-on:buttonActivated="login()"
-                            ></custom-button>
+                        ></custom-button>
 
-                            <p class="signupText" v-on:click="$router.push('/signup')">Ainda não possui cadastro? Clique aqui!</p>
+                        <p class="signupText" v-on:click="$router.push('/signup')">Ainda não possui cadastro? Clique aqui!</p>
+                    </div>
+                    <div v-if="loadingRequest" class="formFooter">
+                         <b-spinner type="grow" variant="light" label="Loading..."></b-spinner>
                     </div>
                 </div>
             </div>
@@ -89,7 +92,8 @@ export default {
                     this.loadingRequest = true;
                     UserService.authUser(this.email, this.password)
                     .then((res) => {
-                        console.log(res);
+                        const token = res.data.token;
+                        localStorage.setItem('token', token);
                         this.loadingRequest = false;
                     }, (err) => {
                         console.log(err);
