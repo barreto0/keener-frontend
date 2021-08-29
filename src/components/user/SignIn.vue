@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="center-in-screen">
-            <div class="formCard">
+            <div class="formCard fadeIn first">
                 <div class="cardHeader">
                     <font-awesome-icon class="icon" icon="boxes" />
                     <h4>Controle de estoque</h4>

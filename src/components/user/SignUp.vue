@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="center-in-screen">
-            <div class="formCard">
+            <div class="formCard fadeIn first">
                 <div class="cardHeader">
                     <h4>Cadastre-se na plataforma</h4>
                 </div>
