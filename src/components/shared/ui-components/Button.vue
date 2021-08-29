@@ -19,27 +19,11 @@ export default {
       type: String,
       required: true,
     },
-    confirmation: {
-      type: Boolean,
-      required: true,
-    },
-    buttonStyle: {
-      type: String,
-    },
   },
   methods: {
     buttonActivate() {
-      if (this.confirmation) {
-        if (confirm("Nuke the page")) {
-          this.$emit("buttonActivated");
-        }
-        return;
-      } else {
-        this.$emit("buttonActivated");
-      }
+      this.$emit("buttonActivated");
     },
-  },
-  computed: {
   },
 };
 </script>

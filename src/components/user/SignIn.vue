@@ -13,55 +13,94 @@
                             <b-form-input
                             class="inputField"
                             id="input-email"
+                            name="Email"
                             type="text"
                             placeholder="Insira seu email"
+                            v-model="email"
+                            v-validate
+                            data-vv-rules="required|email|max:255"
                             ></b-form-input>
                         </b-form-group>
+                        <span class="error" v-show="errors.has('Email')">{{ errors.first('Email') }}</span>
 
                         <b-form-group>
                             <label for="input-password">Senha</label>
                             <b-form-input
                             type="password"
+                            name="Senha"
                             class="inputField"
                             id="input-password"
                             placeholder="Insira sua senha"
-                            required
+                            v-model="password"
+                            v-validate
+                            data-vv-rules="required|max:255"
                             ></b-form-input>
                         </b-form-group>
-                        
-                        <div class="formFooter">
-                            <custom-button
+                        <span class="error" v-show="errors.has('Senha')">{{ errors.first('Senha') }}</span>
+                    
+                    </b-form>
+                    <div class="formFooter">
+                        <custom-button
                             type="submit"
                             label="Entrar"
-                            :confirmation="true"
-                            buttonStyle="danger"
-                            v-on:buttonActivated="nuke()"
+                            v-on:buttonActivated="login()"
                             ></custom-button>
 
                             <p class="signupText" v-on:click="$router.push('/signup')">Ainda não possui cadastro? Clique aqui!</p>
-                        </div>
-                    
-                    </b-form>
+                    </div>
                 </div>
             </div>
         </div>
-        <footer>
-            <p>Gabriel Antônio 2021</p>
-            <p>Processo seletivo keener.io</p>
-        </footer>
+        <custom-footer></custom-footer>
+        
+        <!-- Modal de erro -->
+        
+        <sweet-modal ref="loginErrorModal" icon="error" overlay-theme="dark" modal-theme="dark">
+            Ops! Algo de errado não está certo! Por favor verifique os dados de login!
+        </sweet-modal>
+
     </div>
 </template>
 
 <script>
 import Button from '../shared/ui-components/Button.vue'
+import Footer from '../shared/ui-components/Footer.vue'
+import UserService from '../../services/UserService'
 
 export default {
     components: {
-        'custom-button': Button
+        'custom-button': Button,
+        'custom-footer': Footer,
+    },
+
+    data() {
+        return {
+            loadingRequest: false,
+            email: '',
+            password: ''
+        }
     },
 
     methods: {
-    
+        login () {
+            this.$validator.validateAll()
+            .then((success) => {
+                if (success) {
+                    this.loadingRequest = true;
+                    UserService.authUser(this.email, this.password)
+                    .then((res) => {
+                        console.log(res);
+                        this.loadingRequest = false;
+                    }, (err) => {
+                        console.log(err);
+                        this.loadingRequest = false;
+                        this.$refs.loginErrorModal.open();
+                    })
+                } else {
+                    this.loadingRequest = false;
+                }
+            })
+        }
     },
     
 }

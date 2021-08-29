@@ -42,8 +42,6 @@
                             <custom-button
                             type="submit"
                             label="Cadastrar-se"
-                            :confirmation="true"
-                            buttonStyle="danger"
                             v-on:buttonActivated="nuke()"
                             ></custom-button>
 
@@ -54,19 +52,18 @@
                 </div>
             </div>
         </div>
-        <footer>
-            <p>Gabriel Antônio 2021</p>
-            <p>Processo seletivo keener.io</p>
-        </footer>
+        <custom-footer></custom-footer>
     </div>
 </template>
 
 <script>
 import Button from '../shared/ui-components/Button.vue'
+import Footer from '../shared/ui-components/Footer.vue'
 
 export default {
     components: {
-        'custom-button': Button
+        'custom-button': Button,
+        'custom-footer': Footer
     },
 
     methods: {
