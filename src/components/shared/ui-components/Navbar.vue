@@ -1,5 +1,5 @@
 <template>
-    <div style="padding-top: 40px;">
+    <div style="padding-top: 25px;">
             <b-navbar class="custom-navbar fadeIn first" toggleable type="dark" variant="dark">
                 <b-navbar-nav>
                 <b-navbar-brand>Seja bem vindo, {{ userName }}</b-navbar-brand>

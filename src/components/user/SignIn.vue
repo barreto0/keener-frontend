@@ -85,18 +85,24 @@ export default {
     },
 
     methods: {
-        login () {
+         login () {
             this.$validator.validateAll()
             .then((success) => {
                 if (success) {
                     this.loadingRequest = true;
-                    if (UserService.authUser(this.email, this.password)){
+                    UserService.authUser(this.email, this.password)
+                    .then((res) => {
+                        const token = res.data.token;
+                        const userName = res.data.user.name;
+                        localStorage.setItem('token', token);
+                        localStorage.setItem('userName', userName);
                         this.loadingRequest = false;
                         this.$router.push('/dashboard');
-                    } else {
+                    }, (err) => {
+                        console.log(err);
                         this.loadingRequest = false;
                         this.$refs.loginErrorModal.open();
-                    }                    
+                    })                  
                 } else {
                     this.loadingRequest = false;
                 }

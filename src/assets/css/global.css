@@ -1,12 +1,15 @@
 :root {
   --accentPurple: #7f00bf;
   --bodyGray: #383838;
-  --pannelColor: #1e1e1e;
+  --pannelColor: #212529;
 }
 
 body {
   background-color: var(--bodyGray);
   color: whitesmoke;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+p {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .center-in-screen {
@@ -68,12 +71,18 @@ body {
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 
-  -webkit-animation-duration: 0.6s;
-  -moz-animation-duration: 0.6s;
-  animation-duration: 0.6s;
+  -webkit-animation-duration: 0.8s;
+  -moz-animation-duration: 0.5s;
+  animation-duration: 0.5s;
 }
 
 .fadeIn.first {
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+.fadeIn.second {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;

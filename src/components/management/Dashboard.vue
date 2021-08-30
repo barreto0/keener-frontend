@@ -1,8 +1,13 @@
 <template>
     <div style="min-height: 100vh;">
         <navbar :userName="userName"></navbar>
-        <div class="card fadeIn first">
-        </div>   
+        <div class="card">
+            <div style="padding: 10px;">
+                <span class="menu-tab">Produtos</span>
+                <span class="menu-tab" style="margin-left: 15px;">Transações</span>
+            </div>
+            <products-list></products-list>
+        </div>
         <custom-footer></custom-footer>
     </div>
 </template>
@@ -10,16 +15,19 @@
 <script>
 import Footer from '../shared/ui-components/Footer.vue'
 import Navbar from '../shared/ui-components/Navbar.vue'
+import ProductsList from '../products/ProductList.vue'
 
 export default {
     components: {
         'custom-footer': Footer,
-        'navbar': Navbar
+        'navbar': Navbar,
+        'products-list': ProductsList
     },
 
     data() {
         return {
             userName: '',
+            currentTab: 'Produtos'
         }
     },
 
@@ -43,8 +51,6 @@ export default {
 }
 .card {
   display: flex;
-  justify-content: center;
-  align-items: center;
   margin: auto;
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
@@ -53,6 +59,10 @@ export default {
   width: 95%;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+}
+.menu-tab:hover {
+    color: var(--accentPurple) !important;
+    cursor: pointer;
 }
 
 </style>
