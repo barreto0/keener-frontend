@@ -1,5 +1,11 @@
+:root {
+  --accentPurple: #7f00bf;
+  --bodyGray: #383838;
+  --pannelColor: #1e1e1e;
+}
+
 body {
-  background-color: #383838;
+  background-color: var(--bodyGray);
   color: whitesmoke;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -10,12 +16,12 @@ body {
   min-height: 100vh;
 }
 .form-control:focus {
-  -webkit-box-shadow: -1px 2px 22px 0px rgba(127, 0, 191, 1);
-  -moz-box-shadow: -1px 2px 22px 0px rgba(127, 0, 191, 1);
-  box-shadow: -1px 2px 22px 0px rgba(127, 0, 191, 1);
+  -webkit-box-shadow: -1px 2px 22px 0px var(--accentPurple);
+  -moz-box-shadow: -1px 2px 22px 0px var(--accentPurple);
+  box-shadow: -1px 2px 22px 0px var(--accentPurple);
 }
 .inputField {
-  background-color: #383838;
+  background-color: var(--bodyGray);
   border: 0;
   color: white;
   margin-bottom: 15px;

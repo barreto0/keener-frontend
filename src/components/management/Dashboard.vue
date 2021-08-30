@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h3 class="greeting">Bem vindo à área de gerenciamento, {{ userName }}</h3>
+    <div style="min-height: 100vh;">
+        <navbar :userName="userName"></navbar>
         <div class="card fadeIn first">
         </div>   
         <custom-footer></custom-footer>
@@ -9,10 +9,12 @@
 
 <script>
 import Footer from '../shared/ui-components/Footer.vue'
+import Navbar from '../shared/ui-components/Navbar.vue'
 
 export default {
     components: {
         'custom-footer': Footer,
+        'navbar': Navbar
     },
 
     data() {
@@ -39,7 +41,6 @@ export default {
   padding-bottom: 35px;
   margin-bottom: 0;
 }
-
 .card {
   display: flex;
   justify-content: center;
@@ -47,8 +48,8 @@ export default {
   margin: auto;
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
-  background: #1e1e1e;
-  height: 500px;
+  background: var(--pannelColor);
+  height: 800px;
   width: 95%;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);

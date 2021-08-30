@@ -116,7 +116,7 @@ export default {
 .formCard {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
-  background: #1e1e1e;
+  background: var(--pannelColor);
   height: 500px;
   width: 90%;
   max-width: 400px;
@@ -137,13 +137,13 @@ export default {
 }
 .signupText:hover {
     cursor: pointer;
-    color: #7f00bf;
+    color: var(--accentPurple);
 }
 .icon {
     font-size: 30px;
     margin-bottom: 10px;
     margin-right: 12px;
-    color: #7f00bf;
+    color: var(--accentPurple);
 }
 
 </style>

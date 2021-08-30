@@ -31,7 +31,7 @@ export default {
 <style>
 .button {
   border-radius: 50px;
-  background-color: #7f00bf;
+  background-color: var(--accentPurple);
   color: white;
   border: 0;
   padding: 5px 50px;
