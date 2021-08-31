@@ -49,7 +49,7 @@
                         <p class="signupText" v-on:click="$router.push('/signup')">Ainda não possui cadastro? Clique aqui!</p>
                     </div>
                     <div v-if="loadingRequest" class="formFooter">
-                         <b-spinner type="grow" variant="light" label="Loading..."></b-spinner>
+                         <b-spinner type="grow" variant="light"></b-spinner>
                     </div>
                 </div>
             </div>

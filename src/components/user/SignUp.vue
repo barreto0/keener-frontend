@@ -63,7 +63,7 @@
                             <p class="trailingText" v-on:click="$router.push('/')">Já possui cadastro? Clique aqui!</p>
                     </div>
                     <div v-if="loadingRequest" class="formFooter">
-                         <b-spinner type="grow" variant="light" label="Loading..."></b-spinner>
+                         <b-spinner type="grow" variant="light"></b-spinner>
                     </div>
                 </div>
             </div>

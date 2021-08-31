@@ -4,17 +4,18 @@
         <div class="card fadeIn first">
             <div style="padding: 10px;">
                 <span class="menu-tab">Produtos</span>
-                <span class="menu-tab" style="margin-left: 15px;">Transações</span>
-            
+                <span class="menu-tab">Transações</span>
+
                 <products-list></products-list>
 
-                <div style="width: 300px; display: flex; align-items: flex-end" class="justify-content-center justify-content-sm-end">
+                <div style="width: 300px; margin-left: auto" class="justify-content-center justify-content-sm-end">
                     <custom-button
                         type="submit"
                         label="Adicionar produto"
                         v-on:buttonActivated="$router.push('/product/new')"
                     ></custom-button>
                 </div>
+
             </div>
         </div>
         <div style="margin-top: 100px;">
@@ -46,6 +47,11 @@ export default {
   padding-top: 25px;
   padding-bottom: 35px;
   margin-bottom: 0;
+}
+.menu-tab{
+    font-size: 25px;
+    font-weight: 900;
+    margin-left: 15px;
 }
 .menu-tab:hover {
     color: var(--accentPurple) !important;

@@ -10,7 +10,7 @@ import VeeValidate, { Validator } from 'vee-validate';
 import pt_BR from 'vee-validate/dist/locale/pt_BR';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBoxes } from '@fortawesome/free-solid-svg-icons';
+import { faBoxes, faArrowUp, faArrowDown, faDolly } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import SweetModal from 'sweet-modal-vue/src/plugin.js';
 import moment from 'moment';
@@ -39,7 +39,7 @@ const router = new VueRouter({
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
-library.add(faBoxes);
+library.add(faBoxes, faArrowUp, faArrowDown, faDolly);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.use(SweetModal);

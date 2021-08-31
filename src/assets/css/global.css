@@ -13,19 +13,18 @@ p {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .card {
-  display: flex;
   margin: auto;
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: var(--pannelColor);
-  height: 800px;
+  height: 700px;
   width: 95%;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
 }
 .trailingText {
   font-size: 12px;
-  margin-top: 20px;
+  margin-right: 20px;
 }
 .trailingText:hover {
   cursor: pointer;
@@ -43,9 +42,24 @@ p {
   box-shadow: -1px 2px 22px 0px var(--accentPurple);
 }
 .inputField {
-  background-color: var(--bodyGray);
+  background-color: var(--bodyGray) !important;
   border: 0;
   color: white;
+  margin-bottom: 15px;
+}
+.inputField:focus {
+  background-color: var(--bodyGray) !important;
+  border: 0;
+  color: white;
+  margin-bottom: 15px;
+  -webkit-box-shadow: -1px 2px 22px 0px var(--accentPurple);
+  -moz-box-shadow: -1px 2px 22px 0px var(--accentPurple);
+  box-shadow: -1px 2px 22px 0px var(--accentPurple);
+}
+.inputField:disabled {
+  background-color: var(--bodyGray) !important;
+  border: 0;
+  color: gray;
   margin-bottom: 15px;
 }
 .error {

@@ -85,16 +85,18 @@
                     
                     </b-form>
                     <div v-if="!loadingRequest" class="formFooter">
+                            <span class="trailingText" v-on:click="$router.push('/dashboard')">
+                                Voltar
+                            </span>
+
                             <custom-button
                             type="submit"
-                            label="cadastrar"
+                            :label="currentWindow === 'edit' ? 'Atualizar Produto' : 'Cadastrar Produto'"
                             v-on:buttonActivated="createOrUpdateProduct()"
                             ></custom-button>
-
-                            <p class="trailingText" v-on:click="$router.push('/dashboard')">Voltar</p>
                     </div>
                     <div v-if="loadingRequest" class="formFooter">
-                         <b-spinner type="grow" variant="light" label="Loading..."></b-spinner>
+                         <b-spinner type="grow" variant="light"></b-spinner>
                     </div>
                 </div>
             </div>
@@ -118,25 +120,14 @@
 
 <script>
 import ProductService from '../../services/ProductService'
-import Button from '../shared/ui-components/Button.vue'
-import Footer from '../shared/ui-components/Footer.vue'
-import Navbar from '../shared/ui-components/Navbar.vue'
 
 export default {
-    components: {
-        'custom-button': Button,
-        'custom-footer': Footer,
-        'navbar': Navbar,
-    },
 
     data() {
         return {
             currentWindow: '',
             title: '',
             loadingRequest: false,
-            name: '',
-            email: '',
-            password: '',
             errorMessage: '',
             product: {
                 name: '',
@@ -150,11 +141,11 @@ export default {
 
     created() {
         if (this.$route.params.id !== 'new') {
-        this.currentWindow = 'edit'
-        this.title = 'Editar produto'
+            this.currentWindow = 'edit'
+            this.title = 'Editar produto'
         } else {
-        this.currentWindow = 'register'
-        this.title = 'Cadastrar novo produto'
+            this.currentWindow = 'register'
+            this.title = 'Cadastrar novo produto'
         }
     },
 

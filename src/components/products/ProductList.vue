@@ -1,7 +1,7 @@
 <template>
     <div style="padding: 30px;">
         <b-table
-        sticky-header="600px"
+        sticky-header="400px"
         responsive
         dark
         hover
@@ -30,6 +30,13 @@
 
             <template #cell(updatedAt)="data">
             {{ data.item.updatedAt | formatDate }}
+            </template>
+
+            <template #cell(id)="data">
+                <font-awesome-icon  @click="$router.push(`/transaction/new/${data.item.id}`)" id="movement" class="icon" icon="dolly"/>
+                <b-tooltip target="movement" triggers="hover">
+                    Movimentar<br/>Produto
+                </b-tooltip>
             </template>
         </b-table>
     </div>
@@ -72,6 +79,10 @@ export default {
                 {
                     key: 'updatedAt',
                     label: 'Atualizado a última vez'
+                },
+                {
+                    key: 'id',
+                    label: ' '
                 }
             ],
         }
@@ -105,5 +116,9 @@ export default {
 </script>
 
 <style scoped>
-
+.icon {
+    font-size: 20px;
+    color: var(--accentPurple);
+    margin: 5px;
+}
 </style>
