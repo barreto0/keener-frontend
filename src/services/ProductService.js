@@ -11,5 +11,9 @@ export default {
 
     registerProduct(product) {
         return axios.post(`${url}/register`, product, { headers: {"Authorization" : token} });
+    },
+
+    updateProduct(product) {
+        return axios.put(`${url}`, product, { headers: {"Authorization" : token} });
     }
 }

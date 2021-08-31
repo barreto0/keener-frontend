@@ -9,7 +9,7 @@
                 <div class="formContent">
                     <b-form>
                         <b-form-group>
-                            <label for="input-email">Nome</label>
+                            <label for="input-name">Nome</label>
                             <b-form-input
                             class="inputField"
                             name="Nome"
@@ -24,7 +24,7 @@
                         <span class="error" v-show="errors.has('Nome')">{{ errors.first('Nome') }}</span>
 
                         <b-form-group>
-                            <label for="input-email">Categoria</label>
+                            <label for="input-category">Categoria</label>
                             <b-form-input
                             class="inputField"
                             name="Categoria"
@@ -39,7 +39,7 @@
                         <span class="error" v-show="errors.has('Categoria')">{{ errors.first('Categoria') }}</span>
 
                         <b-form-group>
-                            <label for="input-password">Descrição</label>
+                            <label for="input-Descricao">Descrição</label>
                             <b-form-input
                             name="Descricao"
                             type="text"
@@ -54,7 +54,7 @@
                         <span class="error" v-show="errors.has('Descricao')">{{ errors.first('Descricao') }}</span>
 
                         <b-form-group>
-                            <label for="input-password">Preço</label>
+                            <label for="input-Preco">Preço</label>
                             <b-form-input
                             name="Preco"
                             type="text"
@@ -69,8 +69,9 @@
                         <span class="error" v-show="errors.has('Preco')">{{ errors.first('Preco') }}</span>
 
                         <b-form-group>
-                            <label for="input-password">Quantidade</label>
+                            <label for="input-Quantidade">Quantidade</label>
                             <b-form-input
+                            :disabled="isEdit"
                             name="Quantidade"
                             type="text"
                             class="inputField"
@@ -113,7 +114,7 @@
         <!-- Modal de sucesso no cadastro -->
         
         <sweet-modal ref="productSuccessModal" v-on:close="$router.push('/dashboard')" icon="success" overlay-theme="dark" modal-theme="dark">
-            Produto cadastrado com sucesso!
+            {{ currentWindow === 'register' ? 'Produto cadastrado com sucesso!' : 'Produto atualizado com sucesso!' }}
         </sweet-modal>
     </div>
 </template>
@@ -135,37 +136,65 @@ export default {
                 description: '',   
                 price: '',
                 quantity: ''
-            }
+            },
+            isEdit: false
         }
     },
 
     created() {
         if (this.$route.params.id !== 'new') {
-            this.currentWindow = 'edit'
-            this.title = 'Editar produto'
+            this.getProduct(this.$route.params.id);
+            this.isEdit = true;
+            this.currentWindow = 'edit';
+            this.title = 'Editar produto';
         } else {
-            this.currentWindow = 'register'
-            this.title = 'Cadastrar novo produto'
+            this.currentWindow = 'register';
+            this.title = 'Cadastrar novo produto';
         }
     },
 
     methods: {
+        getProduct(id) {
+            ProductService.getProducts({id: id})
+            .then((res) => {
+                this.product = res.data[0];
+            }, (err) => {
+                console.log(err);
+            })
+        },
+
         createOrUpdateProduct() {
             this.$validator.validateAll()
             .then((success) => {
                 if (success) {
-                    this.loadingRequest = true;
-                    ProductService.registerProduct(this.product)
-                    .then((res) => {
-                        console.log(res);
-                        this.loadingRequest = false;
-                        this.$refs.productSuccessModal.open();
-                    }, (err) => {
-                        this.errorMessage = err.response.data.message
-                        this.loadingRequest = false;
-                        this.$refs.productErrorModal.open();  
-                    })
-                    console.log(this.product);
+                    if(this.currentWindow === 'register') {
+                        this.loadingRequest = true;
+                        ProductService.registerProduct(this.product)
+                        .then((res) => {
+                            console.log(res);
+                            this.loadingRequest = false;
+                            this.$refs.productSuccessModal.open();
+                        }, (err) => {
+                            this.errorMessage = err.response.data.message
+                            this.loadingRequest = false;
+                            this.$refs.productErrorModal.open();  
+                        })
+                    } else {
+                        if (this.currentWindow === 'edit') {
+                            this.loadingRequest = true;
+                            ProductService.updateProduct(this.product)
+                            // eslint-disable-next-line no-unused-vars
+                            .then((res) => {
+                                this.loadingRequest = false;
+                                this.$refs.productSuccessModal.open();
+                            }, (err) => {
+                                this.errorMessage = err.response.data.message
+                                this.loadingRequest = false;
+                                this.$refs.productErrorModal.open();  
+                            })
+                        }
+                    }
+                    
                 } else {
                     this.loadingRequest = false;
                 }
