@@ -60,7 +60,7 @@
                             v-on:buttonActivated="registerUser()"
                             ></custom-button>
 
-                            <p class="signinText" v-on:click="$router.push('/')">Já possui cadastro? Clique aqui!</p>
+                            <p class="trailingText" v-on:click="$router.push('/')">Já possui cadastro? Clique aqui!</p>
                     </div>
                     <div v-if="loadingRequest" class="formFooter">
                          <b-spinner type="grow" variant="light" label="Loading..."></b-spinner>
@@ -153,14 +153,6 @@ export default {
 .formFooter {
     margin-top: 50px;
     text-align: center
-}
-.signinText {
-    font-size: 12px;
-    margin-top: 20px;
-}
-.signinText:hover {
-    cursor: pointer;
-    color: var(--accentPurple);
 }
 
 </style>

@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import Button from './components/shared/ui-components/Button.vue'
+import Footer from './components/shared/ui-components/Footer.vue'
+import Navbar from './components/shared/ui-components/Navbar.vue'
+
 import VueRouter from 'vue-router'; // modulo de roteamento da aplicação
 import VeeValidate, { Validator } from 'vee-validate';
 import pt_BR from 'vee-validate/dist/locale/pt_BR';
@@ -18,6 +22,10 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import '@/assets/css/global.css';
 
 Vue.config.productionTip = false
+
+Vue.component('custom-button', Button);
+Vue.component('custom-footer', Footer);
+Vue.component('navbar', Navbar);
 
 Vue.use(VeeValidate, { fieldsBagName: 'veeFields' });
 Validator.localize('pt_BR', pt_BR);

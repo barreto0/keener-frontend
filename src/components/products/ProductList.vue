@@ -1,6 +1,8 @@
 <template>
     <div style="padding: 30px;">
         <b-table
+        sticky-header="600px"
+        responsive
         dark
         hover
         :busy="isBusy"
@@ -13,6 +15,12 @@
                 <div class="text-center my-2">
                 <b-spinner style="color: var(--accentPurple);" class="align-middle"></b-spinner>
                 <strong style="margin-left: 15px;">Carregando Produtos...</strong>
+                </div>
+            </template>
+
+            <template #cell(description)="data">
+                <div class="w-100 text-truncate">
+                    {{ data.item.description.length > 20 ? `${data.item.description.match(/.{20}/g)[0]}...` : data.item.description }}
                 </div>
             </template>
 
@@ -47,7 +55,7 @@ export default {
                 },
                 {
                     key: 'description',
-                    label: 'Descrição'
+                    label: 'Descrição',
                 },
                 {
                     key: 'price',
@@ -90,7 +98,7 @@ export default {
         rowClickHandler(record, index) {
         // 'record' will be the row data from items
         // `index` will be the visible row number (available in the v-model 'shownItems')
-            console.log(record);
+            this.$router.push(`/product/${record.id}`);
         },
     }
 }

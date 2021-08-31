@@ -7,5 +7,9 @@ const token = localStorage.getItem('token');
 export default {
     getProducts(filter) {
         return axios.post(`${url}`, filter, { headers: {"Authorization" : token} });
+    },
+
+    registerProduct(product) {
+        return axios.post(`${url}/register`, product, { headers: {"Authorization" : token} });
     }
 }

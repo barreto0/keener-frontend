@@ -13,8 +13,8 @@
 
                     <b-collapse id="navbar-toggle-collapse" is-nav>
                     <b-navbar-nav class="ml-auto">
-                        <b-nav-item><span class="custom-navbar-item">Dashboard</span></b-nav-item>
-                        <b-nav-item><span class="custom-navbar-item">Perfil</span></b-nav-item>
+                        <b-nav-item><span @click="$router.push('/dashboard')" class="custom-navbar-item">Dashboard</span></b-nav-item>
+                        <b-nav-item><span @click="$router.push('/profile')" class="custom-navbar-item">Perfil</span></b-nav-item>
                     </b-navbar-nav>
                     </b-collapse>
                 </b-navbar-nav>
@@ -24,12 +24,15 @@
 
 <script>
 export default {
-    props: {
-        userName: {
-        type: String,
-        required: true,
-        },
-    }
+    data() {
+        return {
+            userName: ''
+        }
+    },
+
+    created() {
+        this.userName = localStorage.getItem('userName');
+    },
 }
 </script>
 

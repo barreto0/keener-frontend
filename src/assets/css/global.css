@@ -12,6 +12,25 @@ body {
 p {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.card {
+  display: flex;
+  margin: auto;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: var(--pannelColor);
+  height: 800px;
+  width: 95%;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+}
+.trailingText {
+  font-size: 12px;
+  margin-top: 20px;
+}
+.trailingText:hover {
+  cursor: pointer;
+  color: var(--accentPurple);
+}
 .center-in-screen {
   display: flex;
   justify-content: center;
