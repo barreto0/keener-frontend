@@ -137,12 +137,13 @@ export default {
             loadingRequest: false,
             errorMessage: '',
             transactionOptions: [
-                { value: 'add', text: 'Adicionar' },
-                { value: 'subtract', text: 'Dar baixa' },
+                { value: 'add', text: 'Entrada' },
+                { value: 'subtract', text: 'Baixa' },
             ],
             transaction: {
                 type: '',
                 productId: this.$route.params.productId,
+                productName: '',
                 quantity: ''
             },
             product: {}
@@ -165,7 +166,7 @@ export default {
             ProductService.getProducts({id: this.productId})
             .then((res) => {
                 this.product = res.data[0];
-                console.log(this.product);
+                this.transaction.productName = this.product.name
             }, (err) => {
                 console.log(err);
             })
@@ -177,10 +178,10 @@ export default {
                 if (success) {
                     this.loadingRequest = true;
                     TransactionService.registerTransaction(this.transaction)
+                    // eslint-disable-next-line no-unused-vars
                     .then((res) => {
                         this.loadingRequest = false;
                         this.$refs.transactionSuccessModal.open();
-                        console.log(res);
                     }, (err) => {
                         this.loadingRequest = false;
                         this.$refs.transactionErrorModal.open();

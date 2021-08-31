@@ -1,6 +1,8 @@
 <template>
     <div style="padding: 30px;">
+        <h3 v-if="isEmpty">Ainda não há produtos cadastrados :)</h3>
         <b-table
+        v-if="!isEmpty"
         sticky-header="400px"
         responsive
         dark
@@ -49,6 +51,7 @@ export default {
     data() {
         return {
             isBusy: true,
+            isEmpty: false,
             products: [],
             filters: {},
             fields: [
@@ -66,11 +69,11 @@ export default {
                 },
                 {
                     key: 'price',
-                    label: 'Preço'
+                    label: 'Preço (R$)'
                 },
                 {
                     key: 'quantity',
-                    label: 'Quantidade'
+                    label: 'Quantidade (Und.)'
                 },
                 {
                     key: 'createdAt',
@@ -98,6 +101,7 @@ export default {
             ProductService.getProducts(this.filters)
             .then((res) => {
                 this.products = res.data;
+                this.products.length === 0 ? this.isEmpty = true : this.isEmpty = false
                 this.isBusy = false;
             }, (err) => {
                 console.log(err);
@@ -107,8 +111,6 @@ export default {
 
         // eslint-disable-next-line no-unused-vars
         rowClickHandler(record, index) {
-        // 'record' will be the row data from items
-        // `index` will be the visible row number (available in the v-model 'shownItems')
             this.$router.push(`/product/${record.id}`);
         },
     }
@@ -117,7 +119,7 @@ export default {
 
 <style scoped>
 .icon {
-    font-size: 20px;
+    font-size: 25px;
     color: var(--accentPurple);
     margin: 5px;
 }
