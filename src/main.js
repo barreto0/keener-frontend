@@ -15,7 +15,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import SweetModal from 'sweet-modal-vue/src/plugin.js';
 import moment from 'moment';
 
-import {routes} from './routes';
+import router from './router/router.config'
+
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
@@ -31,10 +32,6 @@ Vue.use(VeeValidate, { fieldsBagName: 'veeFields' });
 Validator.localize('pt_BR', pt_BR);
 
 Vue.use(VueRouter);
-const router = new VueRouter({
-  routes: routes,
-  mode: 'history'
-});
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
