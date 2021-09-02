@@ -14,7 +14,7 @@
                     <b-collapse id="navbar-toggle-collapse" is-nav>
                     <b-navbar-nav class="ml-auto">
                         <b-nav-item><span @click="$router.push('/dashboard')" class="custom-navbar-item">Dashboard</span></b-nav-item>
-                        <b-nav-item><span @click="$router.push('/profile')" class="custom-navbar-item">Perfil</span></b-nav-item>
+                        <b-nav-item><span @click="logout()" class="custom-navbar-item">Logout</span></b-nav-item>
                     </b-navbar-nav>
                     </b-collapse>
                 </b-navbar-nav>
@@ -33,6 +33,13 @@ export default {
     created() {
         this.userName = localStorage.getItem('userName');
     },
+
+    methods: {
+        logout() {
+            localStorage.clear();
+            this.$router.push('/');
+        }
+    }
 }
 </script>
 
