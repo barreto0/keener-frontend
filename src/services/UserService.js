@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 const axios = require('axios');
 import api from '../environment'
-const url = `${api.devURL}/users`
+const url = `${api.url}/users`
 
 export default {
     authUser (email, password) {

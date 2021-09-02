@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 const axios = require('axios');
 import api from '../environment';
-const url = `${api.devURL}/transactions`;
+const url = `${api.url}/transactions`;
 const token = localStorage.getItem('token');
 
 export default {

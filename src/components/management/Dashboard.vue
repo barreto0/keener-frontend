@@ -3,9 +3,6 @@
         <navbar></navbar>
         <div class="card fadeIn first">
             <div style="padding: 10px;">
-                <!-- <span class="menu-tab" id="Produtos" @click="switchTabs('Produtos')">Produtos</span>
-                <span class="menu-tab" id="Transações" @click="switchTabs('Transações')">Transações</span> -->
-
                 <span
                 v-for="tab in tabs"
                 :key="tab.name"
@@ -16,7 +13,7 @@
                 </span>
 
                 <products-list v-if="currentTab === 'Produtos'"></products-list>
-                <transactions-list v-if="currentTab === 'Transações'"></transactions-list>
+                <transactions-list v-if="currentTab === 'Movimentações'"></transactions-list>
 
                 <div v-if="currentTab === 'Produtos'" style="width: 300px; margin-left: auto" class="justify-content-center justify-content-sm-end">
                     <custom-button
@@ -53,7 +50,7 @@ export default {
                     color: 'var(--accentPurple)'
                 },
                 {
-                    name: 'Transações',
+                    name: 'Movimentações',
                     color: 'white',
                 },
             ],
